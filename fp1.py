@@ -16,3 +16,17 @@ def FP1_final_score(questionaries: float, activities: float, practice_work: floa
         + 0.25 * practice_work_score
         )
     return final_score
+
+def pedir_notas(apartado: str) -> list[float]:
+    texto = input(
+        f"Introduce las notas de {apartado}, separadas por comas: "
+    )
+    return [float(nota.strip()) for nota in texto.split(",")]
+
+
+questionaries = pedir_notas("cuestionarios (FE01a)")
+activities = pedir_notas("ejercicios (FE01b)")
+practice_work = pedir_notas("trabajos prácticos (FE02)")
+
+nota_final = FP1_final_score(questionaries, activities, practice_work)
+print(f"La nota final de FP1 es: {nota_final:.2f}")
